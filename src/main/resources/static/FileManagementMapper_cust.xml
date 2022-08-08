@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rsc.data35.irsaas.dao.read.FileManagementMapper" >
+	<select id="fetchMeetDocs" resultType="map">
+		SELECT 
+		id ,
+		object_id mid ,
+		source_file,
+		convert_file,
+		convert_size ,
+		upload_type,
+		upload_people,
+		convert_status,
+		is_download,
+		sys_ctime,
+		sys_valid,
+		convert_name
+		from file_management
+		where object_id = #{mid} 
+		and object_type = 3 
+		and sys_valid = 1
+		order by sys_ctime desc 
+	</select>
+</mapper>
